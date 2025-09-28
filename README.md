@@ -87,6 +87,56 @@ production:
 ```
 - to use solid queue in development
 
+## solid queue and mission control
+- trying to trigger a job
+- rails g job HelloWorld
+- update the job
+```
+class HelloWorldJob < ApplicationJob
+  queue_as :default
+
+  def perform(*args)
+    # Do something later
+    puts "Hello, world"
+  end
+end  
+
+```
+
+- in rails c
+```
+HelloWorldJob.perform_now - it worked
+HelloWorldJob.perform_later
+HelloWorldJob.set(wait: 1.week).perform_later  
+```
+
+- to see that we have the jobs queued
+- install mission control
+- bundle add mission_control-jobs
+- add to routes
+```
+    mount MissionControl::Jobs::Engine, at: "/jobs"
+```
+
+- go to localhous/jobs - didnt work
+- add to development (from the githubhttps://github.com/rails/mission_control-jobs)
+```
+  config.mission_control.jobs.http_basic_auth_enabled = false
+```
+- restart server, 
+- go to localhost/jobs- it worked
+### starting solid queue for the jobs to start running
+- in a terminal window:  bin/rails solid_queue:start
+- to not have to run that in development, update puma.rb
+```
+  plugin :solid_queue if ENV["SOLID_QUEUE_IN_PUMA"] || Rails.env.development?
+```
+
+- restart server
+- stop solid queue
+- rails c and create a new perform later
+- IT WORKED
+
 
 
 
