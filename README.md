@@ -137,6 +137,9 @@ HelloWorldJob.set(wait: 1.week).perform_later
 - rails c and create a new perform later
 - IT WORKED
 
+## CREATING POSTS
+- rails g scaffold post title body:text
+
 
 
 
