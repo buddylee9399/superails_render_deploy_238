@@ -160,6 +160,7 @@ HelloWorldJob.set(wait: 1.week).perform_later
 - health check: /up
 - uploading didnt work
 - used https://render.com/docs/deploy-rails-8
+- followed those steps and IT WORKED
 
 
 
