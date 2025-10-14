@@ -139,6 +139,27 @@ HelloWorldJob.set(wait: 1.week).perform_later
 
 ## CREATING POSTS
 - rails g scaffold post title body:text
+- route to post
+- upload to github
+
+## deploying to render
+- in render
+- new postgres: superails_deploy_238
+- project choose
+- database: leave blank
+- user: leave blank
+- region: east
+- plan option: free
+- create
+- create the web service
+- pick the latest github upload
+- pick project
+- language: ruby
+- variables: master key, DATABASE_URL, SOLID_QUEUE_IN_PUMA = true
+- advanced
+- health check: /up
+- uploading didnt work
+- used https://render.com/docs/deploy-rails-8
 
 
 
